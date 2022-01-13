@@ -10,7 +10,7 @@ const server = app.listen(port,()=>{
 
 const io = require('socket.io')(server);
 
-app.post('/',(req,res)=>{
+app.get('/',(req,res)=>{
   res.send("Hello");
 })
 
