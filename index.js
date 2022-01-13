@@ -10,6 +10,10 @@ const server = app.listen(port,()=>{
 
 const io = require('socket.io')(server);
 
+app.post('/',(req,res)=>{
+  res.send("Hello");
+})
+
 //initialize socket
 io.on('connection',(socket)=>{
   console.log("socket connected",socket.id);
@@ -24,5 +28,7 @@ io.on('connection',(socket)=>{
   socket.on('message',(data)=>{
     console.log(data);
   });
+
+  
 });
 
