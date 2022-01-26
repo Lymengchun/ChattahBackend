@@ -24,10 +24,20 @@ const register = (req, res, next) => {
             })
         })
         .catch(error => {
-            res.json({
-                message: 'An error occured!',
-                error
-            })
+            if(error.code === 11000){
+                res.json({
+                    message: 'Email is already taken!',
+                }
+            )
+            }else{
+                res.json({
+                    message: 'An error occured!',
+                
+                }
+                
+                )
+            }
+          
         })
     })
 
