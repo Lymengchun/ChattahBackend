@@ -2,14 +2,13 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const UsersRoute = require('./routes/users');
 const mongoose = require('mongoose');
 const Users = require('./models/Users');
-const router = require('./routes/users');
+const AuthRoute = require('./routes/auth');
 
 const port = process.env.PORT || 4000;
-
-mongoose.connect('mongodb://localhost:27017/chattah',{useNewUrlParser: true,useUnifiedTopology:true})
+const mongopath = 'mongodb+srv://admin:admin@chattah.c751d.mongodb.net/chattah?authSource=admin&replicaSet=atlas-h6qh6v-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true'
+mongoose.connect(mongopath,{useNewUrlParser: true,useUnifiedTopology:true})
 const db = mongoose.connection;
 
 db.on('error',(err) =>{
@@ -24,9 +23,9 @@ db.once('open',() => {
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
-app.use('/api/users',UsersRoute);
+app.use('/api', AuthRoute);
 
-const server = app.listen(port,()=>{
+const server = app.listen(port, '192.168.1.7',()=>{
   console.log('server is Started on',port);
 });
 

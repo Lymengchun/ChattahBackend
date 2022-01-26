@@ -18,20 +18,17 @@ const usersSchema = new Schema({
     name:{
         type: String,
     },
-    facebookID:{
+    email:{
         type: String,
         unique:true,
         required:true,
         dropDups: true,
         index:true
     },
-    image:{
-        type: String,
-    },
-    hello:[{
+    password:{
         type: String
     }
-    ]
+    
 
 }, {timeseries: true});
 
