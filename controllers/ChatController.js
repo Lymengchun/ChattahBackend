@@ -12,7 +12,8 @@ const index = (req,res, next)=>{
     })
     .catch(errors => {
         res.json({
-            message:'An error Occured!'
+            message:'An error Occured!',
+            errors
         })
     })
 
