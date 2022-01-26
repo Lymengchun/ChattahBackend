@@ -27,7 +27,9 @@ const register = (req, res, next) => {
             if(error.code === 11000){
                 res.json({
                     message: 'Email is already taken!',
+                    error:error.code
                 }
+                
             )
             }else{
                 res.json({
