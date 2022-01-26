@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 app.use('/api', AuthRoute);
 
-const server = app.listen(port, '192.168.1.7',()=>{
+const server = app.listen(port, '0.0.0.0',()=>{
   console.log('server is Started on',port);
 });
 
