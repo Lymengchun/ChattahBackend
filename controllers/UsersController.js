@@ -68,9 +68,7 @@ const login = (req, res, next) => {
         }
     })
 }
-module.exports = {
-    register,login
-}
+
 
 // Show the list of users
 const index = (req, res, next) => {
@@ -168,5 +166,5 @@ const update = (req, res, next) => {
  }
 
  module.exports = {
-     index, show, store, update, destroy
+     index, show, store, update, destroy,register,login
  }
