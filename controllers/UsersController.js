@@ -116,27 +116,27 @@ const show = (req, res, next) => {
 }
 
 // add new users
-const store = (req, res, next) => {
-    let users = new Users({
-                    name: req.body.name,
-                    email:req.body.facebookID,
-                    image: req.body.image
-    })
+// const store = (req, res, next) => {
+//     let users = new Users({
+//                     name: req.body.name,
+//                     email:req.body.facebookID,
+//                     image: req.body.image
+//     })
    
-        users.save()
-        .then(response => {
-            res.json({
-                message: 'Users Added Successfully!'
-            })
-        })
-        .catch(error => {
-            res.json({
-                message: 'An error Occured!'
-            })
-        })
+//         users.save()
+//         .then(response => {
+//             res.json({
+//                 message: 'Users Added Successfully!'
+//             })
+//         })
+//         .catch(error => {
+//             res.json({
+//                 message: 'An error Occured!'
+//             })
+//         })
 
 
-}
+// }
 
 // update an users
 const update = (req, res, next) => {
@@ -144,8 +144,7 @@ const update = (req, res, next) => {
 
     let updatedData = {
         name: req.body.name,
-        facebookID: req.body.facebookID,
-        image: req.body.image
+        email: req.body.email,
     }
 
     Users.findByIdAndUpdate(userID, {$set: updatedData})
@@ -178,5 +177,5 @@ const update = (req, res, next) => {
  }
 
  module.exports = {
-     index, show, store, update, destroy,register,login
+     index, show, update, destroy,register,login
  }
