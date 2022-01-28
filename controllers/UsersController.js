@@ -22,14 +22,14 @@ const register = (req, res, next) => {
             let token = jwt.sign({name: user.name},'&*kls6548',{expiresIn:'48h'})
             res.json({
                 message: 'User Added Successfully!',
-                token
+                token,
+                user
             })
         })
         .catch(error => {
             if(error.code === 11000){
                 res.json({
                     message: 'Email is already taken!',
-                    error:error.code
                 }
                 
             )
@@ -68,6 +68,7 @@ const login = (req, res, next) => {
                     res.json({ 
                         message:'Login Successful!',
                         token,
+                        user
                     })
                 }else{
                     res.json({
