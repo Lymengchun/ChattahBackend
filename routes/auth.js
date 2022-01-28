@@ -9,7 +9,7 @@ router.post('/login',AuthController.login)
 
 router.get('/',authenticate,AuthController.index);
 router.post('/show',authenticate, AuthController.show);
-router.post('/store',authenticate,AuthController.store);
+// router.post('/store',authenticate,AuthController.store);
 router.post('/update',authenticate,AuthController.update);
 router.post('/delete',authenticate,AuthController.destroy);
 
