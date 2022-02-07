@@ -50,7 +50,7 @@ io.on('connection',(socket)=>{
 
   socket.on('message',(msg)=>{
     console.log(msg);
-    if(clients[targetId]) clients[msg.targetId].emit("message",msg);
+    if(clients[targetId])clients[msg.targetId].emit("message",msg);
   });
 
   
