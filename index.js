@@ -45,7 +45,7 @@ io.on('connection',(socket)=>{
   socket.on('signin',(id)=>{
     console.log(id);
     clients[id] = socket;
-    console.log(chients);
+    console.log(clients);
   });
 
   socket.on('message',(data)=>{
