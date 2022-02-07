@@ -33,7 +33,7 @@ const server = app.listen(port, '0.0.0.0',()=>{
 
 const io = require('socket.io')(server);
 
-
+var clients = {};
 
 //initialize socket
 io.on('connection',(socket)=>{
@@ -42,8 +42,9 @@ io.on('connection',(socket)=>{
     console.log("socket disconnected",socket.id);
   });
 
-  socket.on('test',(msg)=>{
-    console.log(msg);
+  socket.on('signin',(id)=>{
+    console.log(id);
+    clients[id] = socket;
   });
 
   socket.on('message',(data)=>{
