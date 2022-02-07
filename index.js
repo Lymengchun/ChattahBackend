@@ -48,8 +48,9 @@ io.on('connection',(socket)=>{
     console.log(clients);
   });
 
-  socket.on('message',(data)=>{
-    console.log(data);
+  socket.on('message',(msg)=>{
+    console.log(msg);
+    clients[msg.targetId].emit("message",msg);
   });
 
   
