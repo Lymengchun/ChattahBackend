@@ -11,9 +11,9 @@ const chatSchema = new Schema({
     targetId:reqString,
     messages:[
         {
-            type:reqString,
-            message:reqString,
-            time:reqString
+            type:{type:String},
+            message:{type:String},
+            time:{type:String}
         }
     ]
 })
