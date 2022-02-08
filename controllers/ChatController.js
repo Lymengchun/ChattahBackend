@@ -65,7 +65,8 @@ const store = (req, res, next) => {
 // update an chat
 const update = (req, res, next) => {
     let sourceId = req.body.sourceId;
-    let targetId = req.body.sourceId
+    let targetId = req.body.sourceId;
+
     let updatedData ={
         sourceId:req.body.sourceId,
         targetId:req.body.sourceId,
@@ -87,6 +88,27 @@ const update = (req, res, next) => {
 
 }
 
+const pushMessage = (req,res,next)=>{
+    let sourceId = req.body.sourceId;
+    let targetId = req.body.sourceId;
+
+    let message = {
+        messages:req.body.messages
+    }
+
+    chat.findByIdAndUpdate(sourceId,targetId, {$push: message})
+    .then(() => {
+        res.json({
+                message: 'chat Updated Successfully!'
+        })
+    })
+    .catch(error => {
+        res.json({
+            message: 'An error Occured!'
+        })
+    })
+}
+
 // delete an Users
 const destroy = (req, res, next) => {
     let sourceId = req.body.sourceId;
@@ -105,5 +127,5 @@ const destroy = (req, res, next) => {
 }
 
 module.exports = {
-    index, show, store, update, destroy
+    index, show, store, update, destroy,pushMessage
 }
