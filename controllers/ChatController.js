@@ -92,7 +92,7 @@ const pushMessage = (req,res,next)=>{
     let message = {messages:req.body.messages}
     console.log(message);
 
-    chat.findByIdAndUpdate(chatId, {$push: message})
+    chat.findOneAndUpdate(chatId, {$push: message})
     .then(() => {
         res.json({
                 message: 'chat push Successfully!'
