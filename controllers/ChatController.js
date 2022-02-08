@@ -52,10 +52,10 @@ const store = (req, res, next) => {
     chat.findOne({$or:[{sourceId:sourceId},{sourceId:targetId}]})
     .then(chats =>{
         if(chats){
-            chat.updateOne({$push:messages})
+            chat.updateMany({$push:messages})
             .then(() => {
                 res.json({
-                    message: 'chat deleted successfully!'
+                    message: 'chat push successfully!'
                 })
             })
             .catch(()=>{
