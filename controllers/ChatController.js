@@ -68,8 +68,6 @@ const update = (req, res, next) => {
     let targetId = req.body.sourceId;
 
     let updatedData ={
-        sourceId:req.body.sourceId,
-        targetId:req.body.sourceId,
         messages:req.body.messages
     }
    
