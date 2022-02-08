@@ -92,7 +92,7 @@ const pushMessage = (req,res,next)=>{
     let message ={
          messages:req.body.messages
         }
-    
+    print(message);
 
     chat.findByIdAndUpdate(chatId, {$push: message})
     .then(() => {
