@@ -54,12 +54,12 @@ const store = (req, res, next) => {
         if(chats){
             chat.updateOne({$push:messages})
             .then(() => {
-                req.json({
+                res.json({
                     message: 'chat deleted successfully!'
                 })
             })
             .catch(()=>{
-                req.json({
+                res.json({
                     message: 'An error Occured!'
                 })
             })
@@ -77,6 +77,12 @@ const store = (req, res, next) => {
         })
 
         }
+    }
+    
+    ).catch(error =>{
+        res.json({
+            error
+        })
     })
 
 
