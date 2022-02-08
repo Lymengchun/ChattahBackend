@@ -89,11 +89,7 @@ const update = (req, res, next) => {
 const pushMessage = (req,res,next)=>{
     let chatId = req.body.chatId;
 
-    let message =[
-        {
-         messages:req.body.messages
-        }
-        ]
+    let message = {messages:req.body.messages}
     console.log(message);
 
     chat.findByIdAndUpdate(chatId, {$push: message})
