@@ -42,13 +42,15 @@ const show = (req, res, next) => {
 const store = (req, res, next) => {
     
     let Chat = new chat({
-           hello:req.body.hello
+           sourceId:req.body.sourceId,
+           targetId:req.body.sourceId,
+           messages:req.body.messages
     })
    
         Chat.save()
         .then(response => {
             res.json({
-                message: 'Users Added Successfully!'
+                message: 'chat Added Successfully!'
             })
         })
         .catch(error => {
@@ -62,15 +64,18 @@ const store = (req, res, next) => {
 
 // update an chat
 const update = (req, res, next) => {
-    let chatID = req.body.chatID;
+    let sourceId = req.body.sourceId;
+    let targetId = req.body.sourceId
     let updatedData ={
-        hello:req.body.hello
+        sourceId:req.body.sourceId,
+        targetId:req.body.sourceId,
+        messages:req.body.messages
     }
    
-    chat.findByIdAndUpdate(chatID, {$set: updatedData})
+    chat.findByIdAndUpdate(sourceId,targetId, {$set: updatedData})
     .then(() => {
         res.json({
-                message: 'User Updated Successfully!'
+                message: 'chat Updated Successfully!'
         })
     })
     .catch(error => {
@@ -84,11 +89,12 @@ const update = (req, res, next) => {
 
 // delete an Users
 const destroy = (req, res, next) => {
-    let chatID = req.body.chatID
-    Users.findByIdAndRemove(chatID)
+    let sourceId = req.body.sourceId;
+    let targetId = req.body.sourceId
+    Users.findByIdAndRemove(sourceId,targetId)
     .then(() => {
         req.json({
-            message: 'User deleted successfully!'
+            message: 'chat deleted successfully!'
         })
     })
     .catch(error => {
