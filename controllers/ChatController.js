@@ -90,7 +90,11 @@ const pushMessage = (req,res,next)=>{
     let chatId = req.body.chatId;
 
     let message = {
-        messages:req.body.messages
+        messages:[{
+            type:req.body.type,
+            message:req.body.message,
+            time:req.body.time
+        }]
     }
 
     chat.findOneAndUpdate(chatId, {$push: message})
@@ -101,7 +105,8 @@ const pushMessage = (req,res,next)=>{
     })
     .catch(error => {
         res.json({
-            message: 'An error Occured!'
+            message: 'An error Occured!',
+            error
         })
     })
 }
