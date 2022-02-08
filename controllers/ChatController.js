@@ -24,7 +24,7 @@ const index = (req,res, next)=>{
 const show = (req, res, next) => {
     let chatID = req.body.chatID;
 
-    Users.findById(chatID)
+    chat.findById(chatID)
     .then(response => {
         res.json({
             response
@@ -40,14 +40,31 @@ const show = (req, res, next) => {
 
 // add new chat
 const store = (req, res, next) => {
-    
+    let sourceId = req.body.sourceId;
+    let targetId = req.body.targetId;
+    let messages  = req.body.messages;
+
     let Chat = new chat({
-           sourceId:req.body.sourceId,
-           targetId:req.body.sourceId,
-           messages:req.body.messages
+           sourceId:sourceId,
+           targetId:targetId,
+           messages:messages
     })
-   
-        Chat.save()
+    chat.findOne({$or:[{sourceId:sourceId},{sourceId:targetId}]})
+    .then(chats =>{
+        if(chats){
+            chat.updateOne({$push:messages})
+            .then(() => {
+                req.json({
+                    message: 'chat deleted successfully!'
+                })
+            })
+            .catch(()=>{
+                req.json({
+                    message: 'An error Occured!'
+                })
+            })
+        }else{
+            Chat.save()
         .then(response => {
             res.json({
                 message: 'chat Added Successfully!'
@@ -58,6 +75,9 @@ const store = (req, res, next) => {
                 message: 'An error Occured!'
             })
         })
+
+        }
+    })
 
 
 }
@@ -110,7 +130,7 @@ const pushMessage = (req,res,next)=>{
 const destroy = (req, res, next) => {
     let sourceId = req.body.sourceId;
     let targetId = req.body.sourceId
-    Users.findByIdAndRemove(sourceId,targetId)
+    chat.findByIdAndRemove(sourceId,targetId)
     .then(() => {
         req.json({
             message: 'chat deleted successfully!'
