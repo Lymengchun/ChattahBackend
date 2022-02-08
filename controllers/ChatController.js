@@ -64,14 +64,13 @@ const store = (req, res, next) => {
 
 // update an chat
 const update = (req, res, next) => {
-    let sourceId = req.body.sourceId;
-    let targetId = req.body.sourceId;
+    let userID = req.body.userID;
 
     let updatedData ={
         messages:req.body.messages
     }
    
-    chat.findByIdAndUpdate(sourceId,targetId, {$set: updatedData})
+    chat.findByIdAndUpdate(userID, {$set: updatedData})
     .then(() => {
         res.json({
                 message: 'chat Updated Successfully!'
