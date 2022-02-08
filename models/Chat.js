@@ -1,11 +1,21 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const reqString = {
+    type:String,
+    required:true
+}
 
 const chatSchema = new Schema({
-    name:{
-        type:String
-    }
+    sourceId:reqString,
+    targetId:reqString,
+    messages:[
+        {
+            type:reqString,
+            message:reqString,
+            time:reqString
+        }
+    ]
 })
 
 const chat = mongoose.model('chat',chatSchema);

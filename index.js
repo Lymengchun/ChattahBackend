@@ -3,8 +3,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-const Users = require('./models/Users');
 const AuthRoute = require('./routes/auth');
+const chat = require('./routes/chatRounte');
 
 const port = process.env.PORT || 4000;
 const mongopath = 'mongodb+srv://admin:admin@chattah.c751d.mongodb.net/chattah?authSource=admin&replicaSet=atlas-h6qh6v-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true'
@@ -23,7 +23,8 @@ db.once('open',() => {
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
-app.use('/api', AuthRoute);
+app.use('/api',AuthRoute);
+app.use('/api/chat',chat);
 
 const server = app.listen(port, '0.0.0.0',()=>{
   console.log('server is Started on',port);
