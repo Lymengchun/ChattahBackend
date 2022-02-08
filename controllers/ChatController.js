@@ -99,7 +99,7 @@ const pushMessage = (req,res,next)=>{
     chat.findByIdAndUpdate(sourceId,targetId, {$push: message})
     .then(() => {
         res.json({
-                message: 'chat Updated Successfully!'
+                message: 'chat push Successfully!'
         })
     })
     .catch(error => {
