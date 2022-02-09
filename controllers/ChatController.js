@@ -65,6 +65,7 @@ const store = (req, res, next) => {
                 })
             })
         }else{
+            console.log(Chat);
             Chat.save()
         .then(response => {
             res.json({
