@@ -43,7 +43,7 @@ const store = (req, res, next) => {
     let sourceId = req.body.sourceId;
     let targetId = req.body.targetId;
     let messages  = {messages:req.body.messages};
-    console.log('ttttttttttttt: ' + messages);
+    console.log('ttttttttttttt: ' + JSON.parse(messages));
     let Chat = new chat({
            sourceId:sourceId,
            targetId:targetId,
