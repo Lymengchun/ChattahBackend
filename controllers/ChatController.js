@@ -53,7 +53,7 @@ const store = (req, res, next) => {
     .then(chats =>{
         console.log("print chats:"+chats);
         if(chats){
-            chat.updateMany({$push:messages})
+            chat.updateOne({$push:messages})
             .then(() => {
                 res.json({
                     message: 'chat push successfully!'
