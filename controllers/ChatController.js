@@ -53,7 +53,7 @@ const store = (req, res, next) => {
     .then(chats =>{
         console.log("print chats:"+chats);
         if(chats){
-            chat.updateOne({$push:messages})
+            chat.updateOne({$and:[{$or:[{sourceId:sourceId},{sourceId:targetId}]},{$or:[{targetId:sourceId},{targetId:targetId}]}]},{$push:messages})
             .then(() => {
                 res.json({
                     message: 'chat push successfully!'
