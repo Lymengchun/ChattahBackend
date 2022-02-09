@@ -47,7 +47,7 @@ const store = (req, res, next) => {
     let Chat = new chat({
            sourceId:sourceId,
            targetId:targetId,
-           messages:req.body.message
+           messages:req.body.messages
     })
     chat.findOne({$and:[{$or:[{sourceId:sourceId},{sourceId:targetId}]},{$or:[{targetId:sourceId},{targetId:targetId}]}]})
     .then(chats =>{
