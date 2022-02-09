@@ -42,7 +42,7 @@ const show = (req, res, next) => {
 const store = (req, res, next) => {
     let sourceId = req.body.sourceId;
     let targetId = req.body.targetId;
-    let messages  = req.body.messages;
+    let messages  = {messages:req.body.messages};
 
     let Chat = new chat({
            sourceId:sourceId,
