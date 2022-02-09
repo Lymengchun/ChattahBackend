@@ -47,11 +47,11 @@ const store = (req, res, next) => {
     let Chat = new chat({
            sourceId:sourceId,
            targetId:targetId,
-           messages:messages
+           messages:req.body.message
     })
     chat.findOne({$and:[{$or:[{sourceId:sourceId},{sourceId:targetId}]},{$or:[{targetId:sourceId},{targetId:targetId}]}]})
     .then(chats =>{
-        console.log("print chats:"+chats);
+        
         if(chats){
             chat.updateOne({$and:[{$or:[{sourceId:sourceId},{sourceId:targetId}]},{$or:[{targetId:sourceId},{targetId:targetId}]}]},{$push:messages})
             .then(() => {
@@ -80,7 +80,7 @@ const store = (req, res, next) => {
 
         }
     }
-    
+ 
     ).catch(error =>{
         res.json({
             error
