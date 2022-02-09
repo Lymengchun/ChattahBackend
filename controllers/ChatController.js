@@ -51,7 +51,7 @@ const store = (req, res, next) => {
     })
     chat.findOne({$and:[{$or:[{sourceId:sourceId},{sourceId:targetId}]},{$or:[{targetId:sourceId},{targetId:targetId}]}]})
     .then(chats =>{
-        console.log(chats);
+        console.log("print chats:"+chats);
         if(chats){
             chat.updateMany({$push:messages})
             .then(() => {
