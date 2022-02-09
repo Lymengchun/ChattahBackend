@@ -43,7 +43,7 @@ const store = (req, res, next) => {
     let sourceId = req.body.sourceId;
     let targetId = req.body.targetId;
     let messages  = {messages:req.body.messages};
-    console.log(messages);
+    console.log(messages['message']);
     let Chat = new chat({
            sourceId:sourceId,
            targetId:targetId,
@@ -118,7 +118,7 @@ const pushMessage = (req,res,next)=>{
     let chatId = req.body.chatId;
 
     let message = {messages:req.body.messages}
-    console.log(message);
+    // console.log(message);
 
     chat.findOneAndUpdate(chatId, {$push: message})
     .then(() => {
