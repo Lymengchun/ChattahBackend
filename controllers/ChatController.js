@@ -94,7 +94,7 @@ const getchat = (req,res,next) => {
     chat.findOne({$and:[{$or:[{sourceId:req.body.sourceId},{sourceId:req.body.targetId}]},{$or:[{targetId:req.body.sourceId},{targetId:req.body.targetId}]}]})
     .then(response =>{
         res.json({
-            response:response['messages'],
+            response:response['messages']['response'],
             message: 'get chat data Successfully!'
         })
     })
