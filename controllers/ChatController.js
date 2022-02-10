@@ -107,6 +107,22 @@ const getchat = (req,res,next) => {
 
 }
 
+const getownchat = (req,res,next) => {
+    chat.find({$or:[{sourceId:req.body.sourceId},{targetId:req.body.sourceId}]})
+    .then(response =>{
+        res.json({
+            response:response['messages'],
+            message: 'get own chat list successfully!'
+        })
+    })
+    .catch(error =>{
+        res.json({
+            message: 'An error Occured!',
+            error
+        })
+    })
+}
+
 // update an chat
 const update = (req, res, next) => {
     let chatId = req.body.chatId;
@@ -169,5 +185,5 @@ const destroy = (req, res, next) => {
 }
 
 module.exports = {
-    index, show, store, update, destroy,pushMessage,getchat
+    index, show, store, update, destroy,pushMessage,getchat,getownchat
 }
