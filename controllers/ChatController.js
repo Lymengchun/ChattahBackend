@@ -90,6 +90,23 @@ const store = (req, res, next) => {
 
 }
 
+const getchat = (req,res,next) => {
+    chat.findOne({$and:[{$or:[{sourceId:req.body.sourceId},{sourceId:req.body.targetId}]},{$or:[{targetId:req.body.sourceId},{targetId:req.body.targetId}]}]})
+    .then(response =>{
+        res.json({
+            response:response['messages'],
+            message: 'get chat data Successfully!'
+        })
+    })
+    .catch(error =>{
+        res.json({
+            message: 'An error Occured!',
+            error
+        })
+    })
+
+}
+
 // update an chat
 const update = (req, res, next) => {
     let chatId = req.body.chatId;
@@ -152,5 +169,5 @@ const destroy = (req, res, next) => {
 }
 
 module.exports = {
-    index, show, store, update, destroy,pushMessage
+    index, show, store, update, destroy,pushMessage,getchat
 }
