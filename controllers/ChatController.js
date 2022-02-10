@@ -111,10 +111,10 @@ const getownchat = (req,res,next) => {
     chat.find({$or:[{sourceId:req.body.sourceId},{targetId:req.body.sourceId}]})
     .then(response =>{
         res.json({
-            response:response[0],
+            response:response,
             message: 'get own chat list successfully!'
         })
-        console.log('messages:'+response[0]['messages'])
+
     })
     .catch(error =>{
         res.json({
