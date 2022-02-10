@@ -114,7 +114,7 @@ const getownchat = (req,res,next) => {
             response:response['messages'],
             message: 'get own chat list successfully!'
         })
-        console.log('messages:'+response['respone']['_id'])
+        console.log('messages:'+response)
     })
     .catch(error =>{
         res.json({
