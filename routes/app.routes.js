@@ -2,6 +2,7 @@ const pushNotificationController = require("../controllers/push-notification.con
 
 const express = require("express");
 const router = express.Router();
+const authenticate = require('../middleware/authenticate')
 
 router.get("/SendNotification", pushNotificationController.SendNotification);
 router.post("/SendNotificationToDevice", pushNotificationController.SendNotificationToDevice);

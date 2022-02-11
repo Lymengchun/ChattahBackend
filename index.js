@@ -23,7 +23,7 @@ db.once('open',() => {
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
-app.use('/api',AuthRoute);
+// app.use('/api',AuthRoute);
 app.use('/api/chat',chat);
 app.use('/api',require('./routes/app.routes'));
 
