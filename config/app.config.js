@@ -1,0 +1,8 @@
+const ONE_SIGNAL_CONFIG = {
+    APP_ID: "ab2da764-1106-4f34-8e4a-9ea96d7583c1",
+    API_KEY: "MjY2YjE4ZTctMzIyNi00MWM5LTk2YmQtNTc4OTYxNTFhZWEy"
+};
+
+module.exports = {
+    ONE_SIGNAL_CONFIG,
+}
