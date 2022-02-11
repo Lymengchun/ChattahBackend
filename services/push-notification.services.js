@@ -3,7 +3,7 @@ const{ ONE_SIGNAL_CONFIG} = require('../config/app.config');
 async function SendNotification(data, callback){
     var headers = {
         "Content-Type":"application/json; charset=utf-8",
-        Authorization: "Basic" + ONE_SIGNAL_CONFIG.API_KEY,
+        "Authorization": "Basic" + ONE_SIGNAL_CONFIG.API_KEY,
     };
 
     var options = {
