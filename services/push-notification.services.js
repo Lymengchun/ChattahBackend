@@ -30,7 +30,7 @@ async function SendNotification(data, callback){
         });
     });
 
-    req.write(josn.stringify(data));
+    req.write(JSON.stringify(data));
     req.end();
 }
 
